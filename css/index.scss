@@ -1,0 +1,349 @@
+  /* Define the animation keyframes */
+/*   Start Animation */
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }
+  @keyframes left-move {
+    50% {
+        left: 0;
+        width: 10px;
+        height: 10px;
+    }
+    100% {
+        left: 0;
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+    }
+  }
+  @keyframes right-move {
+    50% {
+        right: 0;
+        width: 10px;
+        height: 10px;
+    }
+    100% {
+        right: 0;
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+    }
+  }
+
+  /*   End Animation */
+  $transition: all 0.5s linear;
+/* Start define main class*/
+.liked{
+    color: #6b98e6 !important;
+}
+.dis{
+    display: none;
+}
+img{
+    object-fit: fill !important;
+}
+/* End define main class*/
+#nav{
+    background-color:#071939;
+    color: #fff;
+    button{
+        i{
+        //    background-color: #6b98e6 !important; 
+           color: #6b98e6 !important; 
+           transition: $transition;
+        }
+        
+    }
+   li{
+    margin-left: 5px;
+    
+    a{
+        color: #fff;
+        font-weight: bolder;
+        position: relative; /* Required for ::after positioning */
+        display: inline-block; /* or inline if you want it to be inline with the text */
+        // padding-bottom: 20px;
+        
+        &::after{
+            content: ''; 
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 0%;
+            height: 3px; 
+            transition: $transition;
+            
+        }
+        
+    }
+   
+    &:hover a {
+        color: #6b98e6;
+        
+        &::after{
+            content: ''; 
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 3px; 
+            // margin-left: 5px;
+            background-color: #6b98e6; 
+            transition: $transition;
+            
+        }
+    }
+    
+   }
+   .act{
+    a::after{
+        content: ''; 
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100%;
+        height: 3px; 
+        background-color: #6b98e6; 
+    }
+    }
+    img{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        box-shadow: 0 0 50px 0 rgba(213, 206, 206, 0.9);
+    }
+    .icon-container{
+        border: none;
+        background-color: transparent;
+        display: inline-block;
+        cursor: pointer;
+        color: #6b98e6;
+        
+        &:hover .fa-magnifying-glass {
+            // animation: rotate 1s linear ;
+            transform: rotate(180deg);
+            transition: $transition;
+        }
+        transform: rotate(360deg);
+        transition: $transition;
+        
+    }
+    .fav{
+        &:hover i{
+            color: #6b98e6;
+        }
+    }
+}
+#add{
+    button{
+        position: relative;
+        z-index: 1;
+        transition: $transition;
+        &:hover{
+            background-color: transparent;
+            transition: $transition;
+            transition-delay: 0.1s;
+            
+        }
+        &::before , &::after{
+            content: ' ';
+            width: 10px;
+            height: 10px;
+            background-color: #6b98e6;
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            transition: $transition;
+            transform: translateY(-50%);
+        }
+        &::before {
+            left: -30px;
+        }
+        &::after{
+            right: -30px;
+        }
+        &:hover::before {
+            z-index: -1;
+            animation: left-move .3s linear forwards;
+        }
+        &:hover::after {
+            z-index: -1;
+            animation: right-move .3s linear forwards;
+        }
+        .ad{
+            color: #6b98e6;
+            transition: $transition;
+        }
+        &:hover .ad{
+            color: #fff;
+            transition: $transition;
+        }
+    }
+}
+#posts{
+    .read{
+        color: #6b98e6;
+        background-color: transparent;
+        border: none;
+    }
+    a{
+        text-decoration: none;
+        color: #000;
+    }
+    .box{
+        box-shadow: 0 2px 15px rgba(162, 155, 155, 0.3); 
+        padding: 5px;
+        overflow: hidden;
+        // background-color: rgb(212, 206, 206);
+        border-radius: 6px;
+        transition: $transition;
+        .card{
+            border: none;
+        }
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+          }
+    }
+}
+
+#details{
+    #bigImage{
+        width: 100%;
+    }
+    .all{
+       
+        .card{
+            border: none;
+            box-shadow: 0 2px 15px rgba(162, 155, 155, 0.3);
+            padding: 5px;
+            .sub-image{
+                img{
+                    width: 320px;
+                    height: 150px;
+                }
+            }
+        }
+        .reactions{
+            font-weight: bolder;
+            .count{
+                color: #6b98e6;
+                text-decoration: underline;
+            }
+            .icon{
+                button{
+                    border: none;
+                    background-color: transparent;
+                }
+                i{
+                    color: rgb(205, 201, 201);
+                    // color: #6b98e6;
+                }
+            }
+            .rate{
+                button{
+                    &:hover i{
+                        color: yellow;
+                    }
+                }
+            }
+            .comment{
+                button{
+                    &:hover i{
+                        color: #6b98e6;
+
+                    }
+                }
+            }
+            
+        }
+        .add-comment{
+            input{
+                border-radius: 16px;
+            }
+            button{
+                border: none;
+                background-color: transparent;
+              
+                i:hover{
+                    color: #6b98e6;
+                }
+            }
+        }
+        .add-rate{
+            select{
+                border-radius: 16px;
+            }
+            button{
+                border: none;
+                background-color: transparent;
+                &:hover{
+                    color: yellow;
+                }
+            }
+        }
+        .comments{
+            overflow-y: auto;
+            height: 350px;
+            img{
+                width:80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+            .image-star{
+                i{
+                    color: yellow;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+#modal{
+    .scroll{
+        overflow-y: auto;
+    }
+    .all{
+        height: 300px;
+        img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    }
+}
+
+#footer{
+    background-color: #071939;
+    color: #fff;
+    border-radius: 300px/200px 150px 0px 0px;
+    img{
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+    }
+}
+.design{
+    background-color: #292727;
+    color: #c2c8d3;
+    font-size:25px;
+    font-weight: bolder;
+    
+}
+#modal{
+    .form-group > textarea.form-control {
+        text-align: left;
+      }
+    div{
+        border-radius: 20px;
+    }
+    
+}
