@@ -21,10 +21,10 @@ $(document).ready(function () {
         $(".add-comment").toggleClass("dis");
        
    });
-   $(document).ready(function() {
+   
     // Get references to the big image and all small images
     const $bigImage = $("#bigImage");
-    const $smallImages = $(".box img");
+    const $smallImages = $("#details .box img");
 
     // Attach click event handler to all small images
     $smallImages.on("click", function() {
@@ -36,5 +36,13 @@ $(document).ready(function () {
         audio.play();
     });
 
+   
 });    
-});    
+
+$(window).on("load" , function(){
+    $(".lds-hourglass").fadeOut(2000,function(){
+        $(this).parent().fadeOut(2000,function(){
+            $(this).remove();
+        })
+    })
+});
